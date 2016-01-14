@@ -9,14 +9,39 @@ a {
     color: inherit;
 }
 
+/**************************/
+/*       Navigation       */
+/**************************/
+
 #navigation {
     display: block;
-    clear: both;
+    background: black;
+    color: white;
+
 }
 
+/* Omdat we floats hebben in onze navigatie, zorgen we voor een clear-fix*/
+#navigation:after {
+    content: ' ';
+    clear: both;
+    display: block;
+}
+
+#navigation a{
+    display: block;
+    font-weight: bold;
+    padding: 1em 1.5em;
+    text-align: center;
+    text-decoration: none;
+}
+
+#navigation-home {
+    display: block;
+    float: left;
+}
 
 #navigation-menu {
-    display: flex;
+    display: flex; /* Flex-box! */
     margin: 0;
     padding: 0;
     list-style: none;
@@ -26,7 +51,6 @@ a {
 #navigation-menu > li {
     border-right: 1px solid #ddd;
     display: block;
-    width: 25%;
 }
 
 #navigation-menu > li:hover,
@@ -39,15 +63,6 @@ a {
     border-right: none;
 }
 
-#navigation-menu a{
-    color: #222;
-    display: block;
-    font-weight: bold;
-    padding: 1em 0;
-    text-align: center;
-    text-decoration: none;
-}
-
 #navigation-toggle {
     background: rgba(255, 255, 255, 0.8) url("http://i.imgur.com/vKRaKDX.png") center no-repeat;
     background-size: 80%;
@@ -57,26 +72,20 @@ a {
     outline: none;
     overflow: hidden;
     position: absolute;
-    right: 15px;
+    right: .7em;
     text-indent: 200%;
-    top: 15px;
+    top: .7em;
     transition: all 400ms ease;
     width: 30px;
 }
 
-#navigation-home {
-    display: block;
-    float: left;
+#navigation.open #navigation-toggle {
+    transform: rotate(90deg);
+    background-color: rgba(255, 255, 255, 1);
 }
 
 #navigation-toggle {
     display: none;
-}
-
-#navigation-toggle.expanded {
-    transform: rotate(90deg);
-    background-color: transparent;
-    border: 0;
 }
 
 article {
@@ -87,16 +96,20 @@ article {
     #navigation-home {
         float: none;
     }
+
     #navigation-menu {
         background: #eee;
+        color: #000;
         display: none;
         position: fixed;
-        top: 0;
+        top: 3em;
         left: 0;
-        right: 0;
+        bottom: 0;
+        overflow: auto;
+        width: 100%;
     }
 
-    #navigation-menu.open {
+    #navigation.open #navigation-menu{
         display: block;
     }
 

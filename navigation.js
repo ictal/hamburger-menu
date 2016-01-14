@@ -6,19 +6,16 @@ function hamburgerMenu(buttonId, menuId) {
 
     function open() {
         menu.classList.add('open'); // eerst voegen we de klassificeren het menu als 'open'
-        button.classList.add('expanded'); // we klassificeren de button als 'expanded'
         isOpen = true; // en we onthouden dat het menu open is
     }
 
     function close() {
         menu.classList.remove('open'); // eerst verwijderen we de klassificereng 'open' weg van het menu
-        button.classList.remove('expanded'); // eerst verwijderen we de klassificereng 'expanded' weg van de button
         isOpen = false;  // en we onthouden dat het menu dicht is.
     }
 
-
     function toggle() {
-        isOpen ? close(): open(); // als het menu open is, sluiten we het, anders openen we het
+        isOpen ? close() : open(); // als het menu open is, sluiten we het, anders openen we het
     }
 
 
